@@ -1,0 +1,718 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Aibarys Родитель</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=Unbounded:wght@500;600&display=swap">
+<style>
+/* Layout: same red/white identity as the student and teacher apps; one column, five-tab bottom bar, red guide circle in the corner. */
+:root {
+  --bg: #F7F4F4;
+  --surface: #FFFFFF;
+  --fg: #1E1315;
+  --muted: #6B5C5F;
+  --line: #E7DEDF;
+  --red: #C8102E;
+  --red-text: #B20E29;
+  --red-soft: #FCE8EB;
+  --on-red: #FFFFFF;
+  --band: #C8102E;
+  --chip: #EFE8E9;
+  --hi: #137A3A; --hi-bg: #DDF3E4;
+  --mid: #8A5A06; --mid-bg: #FBEFC9;
+  --font-display: "Unbounded", "Golos Text", system-ui, sans-serif;
+  --font-body: "Golos Text", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #170D0F; --surface: #241619; --fg: #F6ECEE; --muted: #B7A3A7; --line: #3A2629;
+    --red: #E0243D; --red-text: #FF7A8C; --red-soft: #43191F; --on-red: #FFFFFF; --band: #B30F29;
+    --chip: #332326;
+    --hi: #6FD394; --hi-bg: #163626; --mid: #EDC25B; --mid-bg: #3A2F12;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #170D0F; --surface: #241619; --fg: #F6ECEE; --muted: #B7A3A7; --line: #3A2629;
+  --red: #E0243D; --red-text: #FF7A8C; --red-soft: #43191F; --on-red: #FFFFFF; --band: #B30F29;
+  --chip: #332326;
+  --hi: #6FD394; --hi-bg: #163626; --mid: #EDC25B; --mid-bg: #3A2F12;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--fg);
+  font-family: var(--font-body); font-size: 16px; line-height: 1.45;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 16px 104px;
+}
+.wrap { max-width: 680px; margin: 0 auto; display: flex; flex-direction: column; gap: 16px; }
+button, input, select, textarea { font: inherit; color: inherit; }
+button { cursor: pointer; }
+:focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+.muted { color: var(--muted); }
+h3 { font-size: 13px; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); font-weight: 600; margin: 0; }
+
+.band { position: relative; overflow: hidden; background: var(--band); color: #fff; border-radius: 20px; padding: 18px 18px 16px; display: flex; flex-direction: column; gap: 14px; }
+.band .deco { position: absolute; right: -40px; top: -50px; width: 220px; height: 220px; opacity: .16; pointer-events: none; }
+.brand { display: flex; align-items: center; gap: 12px; position: relative; }
+.brand svg { flex: none; }
+.word { font-family: var(--font-display); font-weight: 600; font-size: 28px; line-height: 1; letter-spacing: .01em; }
+.sch { font-size: 13px; opacity: .85; margin-top: 4px; }
+.bandrow { position: relative; display: flex; justify-content: space-between; align-items: center; gap: 12px; flex-wrap: wrap; }
+.bandrow .st { font-weight: 600; }
+.pill { display: inline-block; background: rgba(255,255,255,.18); border-radius: 999px; padding: 2px 10px; font-size: 13px; font-weight: 500; margin-left: 8px; }
+.bandrow .dt { font-size: 14px; opacity: .9; }
+
+.panel { display: flex; flex-direction: column; gap: 16px; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 14px; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.ch { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.lnk { border: 0; background: none; color: var(--red-text); font-weight: 600; font-size: 14px; padding: 2px 0; }
+.greet { font-family: var(--font-display); font-weight: 500; font-size: 20px; margin: 4px 0 0; text-wrap: balance; }
+.hero { background: var(--red-soft); border-color: transparent; }
+.hero .k { font-size: 13px; color: var(--red-text); font-weight: 600; text-transform: uppercase; letter-spacing: .06em; }
+.hero .n { font-family: var(--font-display); font-weight: 500; font-size: 22px; line-height: 1.2; }
+.hero .s { color: var(--muted); font-size: 15px; }
+.rows { display: flex; flex-direction: column; gap: 8px; }
+.row { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 12px; align-items: center; }
+.row .nm { font-weight: 500; }
+.row .sb { font-size: 13px; color: var(--muted); }
+.empty { color: var(--muted); font-size: 15px; padding: 4px 0; }
+.acts { display: flex; gap: 8px; flex-wrap: wrap; }
+
+.seg { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 4px; padding: 4px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+.seg button { border: 0; background: transparent; padding: 9px 6px; border-radius: 9px; font-weight: 600; font-size: 14px; color: var(--muted); min-width: 0; }
+.seg button[aria-pressed="true"] { background: var(--red); color: var(--on-red); }
+#moreseg { grid-auto-flow: row; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); }
+
+.g { display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 30px; padding: 0 4px; border-radius: 8px; font-weight: 600; font-variant-numeric: tabular-nums; background: var(--chip); color: var(--fg); }
+.g.hi { background: var(--hi-bg); color: var(--hi); }
+.g.mid { background: var(--mid-bg); color: var(--mid); }
+.g.lo { background: var(--surface); color: var(--red-text); box-shadow: inset 0 0 0 1.5px var(--red); }
+.g.big { min-width: 40px; height: 40px; font-size: 18px; }
+
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px; min-width: 0; }
+.stat .v { font-family: var(--font-display); font-weight: 600; font-size: 22px; font-variant-numeric: tabular-nums; color: var(--red-text); }
+.stat .l { font-size: 13px; color: var(--muted); }
+
+.days { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; }
+.days button { border: 1px solid var(--line); background: var(--surface); border-radius: 10px; padding: 8px 0 7px; display: flex; flex-direction: column; align-items: center; gap: 1px; }
+.days .dn { font-weight: 600; }
+.days .dd { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.days button[aria-pressed="true"] { border-color: var(--red); background: var(--red-soft); }
+.days button.today .dn::after { content: ""; display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: var(--red); margin-left: 5px; vertical-align: middle; }
+.daymeta { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; color: var(--muted); font-size: 14px; }
+.daymeta strong { color: var(--fg); font-weight: 600; }
+.lesson { display: grid; grid-template-columns: 28px 64px minmax(0, 1fr); gap: 12px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.lesson .num { font-family: var(--font-display); font-weight: 500; font-size: 18px; color: var(--muted); text-align: center; }
+.lesson .time { font-size: 13px; color: var(--muted); font-variant-numeric: tabular-nums; line-height: 1.3; }
+.lesson .time b { display: block; color: var(--fg); font-weight: 600; font-size: 15px; }
+.lesson .name { font-weight: 600; }
+.lesson .sub { font-size: 14px; color: var(--muted); overflow-wrap: anywhere; }
+.lesson.now { border-color: var(--red); background: var(--red-soft); }
+.badge { display: inline-block; font-size: 12px; font-weight: 600; color: var(--on-red); background: var(--red); border-radius: 6px; padding: 1px 7px; margin-left: 8px; vertical-align: 2px; }
+
+details { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; }
+summary { list-style: none; cursor: pointer; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px 12px; align-items: center; padding: 12px 14px; }
+summary::-webkit-details-marker { display: none; }
+summary .nm { font-weight: 600; }
+summary .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+summary .chips .g { min-width: 26px; height: 26px; font-size: 14px; border-radius: 6px; }
+summary .avg { grid-column: 2; grid-row: 1 / span 2; text-align: right; font-variant-numeric: tabular-nums; }
+summary .avg b { display: block; font-family: var(--font-display); font-weight: 600; font-size: 20px; }
+summary .avg span { font-size: 12px; color: var(--muted); }
+summary .bar { grid-column: 1 / -1; }
+.bar { display: block; height: 6px; border-radius: 3px; background: var(--chip); overflow: hidden; }
+.bar i { display: block; height: 100%; background: var(--red); border-radius: 3px; }
+details[open] summary { border-bottom: 1px solid var(--line); }
+.detail { list-style: none; margin: 0; padding: 4px 14px 8px; }
+.detail li { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 8px 0; border-top: 1px solid var(--line); font-size: 15px; }
+.detail li:first-child { border-top: 0; }
+.detail .d { color: var(--muted); font-size: 13px; font-variant-numeric: tabular-nums; }
+.detail .t { color: var(--muted); }
+
+svg.chart { width: 100%; height: auto; display: block; }
+.chart .axis { fill: var(--muted); font-size: 10px; font-family: var(--font-body); }
+.chart .val { fill: var(--fg); font-size: 11px; font-weight: 600; font-family: var(--font-body); }
+.chart .grid { stroke: var(--line); stroke-width: 1; }
+.chart .ln { fill: none; stroke: var(--red); stroke-width: 2.5; stroke-linejoin: round; stroke-linecap: round; }
+.chart .area { fill: var(--red-soft); }
+.chart .dot { fill: var(--red); }
+.chart .bar-r { fill: var(--red); }
+.chart .bar-r.cur { fill: var(--red); }
+.chart .bar-r.old { fill: var(--chip); }
+
+.score { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: center; }
+.score .n { font-family: var(--font-display); font-weight: 600; font-size: 40px; line-height: 1; color: var(--red-text); font-variant-numeric: tabular-nums; }
+.score .n small { font-size: 16px; color: var(--muted); font-weight: 500; }
+.score .t { font-weight: 600; }
+.score .s { font-size: 14px; color: var(--muted); }
+.rep { display: grid; gap: 8px; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.rep .hd { display: flex; justify-content: space-between; gap: 8px; align-items: center; flex-wrap: wrap; }
+.rep .who { font-weight: 600; overflow-wrap: anywhere; }
+.rep dl { margin: 0; display: grid; gap: 6px; font-size: 14px; }
+.rep dt { color: var(--muted); font-size: 12px; text-transform: uppercase; letter-spacing: .05em; }
+.rep dd { margin: 0; overflow-wrap: anywhere; }
+.scale { display: grid; gap: 6px; font-size: 14px; }
+.scale div { display: grid; grid-template-columns: 30px minmax(0, 1fr); gap: 10px; align-items: center; }
+select { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+input[type="text"] { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); }
+.btn { border: 0; background: var(--red); color: var(--on-red); font-weight: 600; padding: 11px 16px; border-radius: 10px; }
+.btn.alt { background: var(--chip); color: var(--fg); }
+.btn.sm { padding: 8px 12px; font-size: 14px; }
+.btn:disabled { opacity: .5; cursor: not-allowed; }
+.err { color: var(--red-text); font-size: 14px; min-height: 1.2em; }
+
+.task { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; align-items: start; background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; }
+.task .nm { font-weight: 600; }
+.task .tx { font-size: 15px; overflow-wrap: anywhere; }
+.due { font-size: 12px; font-weight: 600; border-radius: 6px; padding: 2px 8px; background: var(--chip); white-space: nowrap; }
+.due.late { background: var(--red); color: var(--on-red); }
+.due.soon { background: var(--red-soft); color: var(--red-text); }
+.tcard { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 12px 14px; display: grid; gap: 4px; }
+.tcard .tn { font-weight: 600; overflow-wrap: anywhere; }
+.tcard .tmeta { font-size: 13px; color: var(--muted); }
+.news .d { font-size: 13px; color: var(--muted); }
+.news .t { font-weight: 600; }
+.news .b { font-size: 15px; }
+
+.nav { position: fixed; left: 0; right: 0; bottom: 0; z-index: 5; background: var(--surface); border-top: 1px solid var(--line); padding: 6px max(8px, env(safe-area-inset-right, 0px)) calc(6px + env(safe-area-inset-bottom, 0px)) max(8px, env(safe-area-inset-left, 0px)); }
+.nav .in { max-width: 680px; margin: 0 auto; display: grid; grid-template-columns: repeat(5, 1fr); gap: 2px; }
+.nav button { border: 0; background: transparent; display: flex; flex-direction: column; align-items: center; gap: 2px; padding: 6px 0; font-size: 11.5px; font-weight: 500; color: var(--muted); position: relative; min-width: 0; }
+.nav button[aria-current="page"] { color: var(--red-text); font-weight: 600; }
+.nav button[aria-current="page"]::before { content: ""; position: absolute; top: -7px; left: 28%; right: 28%; height: 3px; border-radius: 0 0 3px 3px; background: var(--red); }
+.nav svg { width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* Guide circle and chat */
+.msgs { display: flex; flex-direction: column; gap: 8px; overflow-y: auto; }
+.msg-b { max-width: 92%; padding: 10px 12px; border-radius: 14px; white-space: pre-wrap; overflow-wrap: anywhere; font-size: 16px; line-height: 1.4; }
+.msg-b.ai { background: var(--chip); align-self: flex-start; border-bottom-left-radius: 4px; }
+.msg-b.me { background: var(--red); color: var(--on-red); align-self: flex-end; border-bottom-right-radius: 4px; }
+.qchips { display: flex; flex-wrap: wrap; gap: 6px; }
+.qchips button { border: 1px solid var(--line); background: var(--surface); border-radius: 999px; padding: 7px 12px; font-size: 14px; text-align: left; }
+.qchips button:hover { border-color: var(--red); }
+.gform { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; align-items: end; }
+.gform textarea { width: 100%; padding: 10px 12px; border-radius: 10px; border: 1px solid var(--line); background: var(--bg); color: var(--fg); resize: none; min-height: 56px; max-height: 120px; font: inherit; }
+.fab { position: fixed; right: max(16px, env(safe-area-inset-right, 0px)); bottom: calc(76px + env(safe-area-inset-bottom, 0px)); width: 56px; height: 56px; border-radius: 50%; border: 0; background: var(--red); color: var(--on-red); box-shadow: 0 6px 18px rgba(0,0,0,.28); z-index: 8; display: flex; align-items: center; justify-content: center; }
+.fab svg { width: 26px; height: 26px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+.fab[aria-expanded="true"] { background: var(--fg); color: var(--bg); }
+.gpanel { position: fixed; right: max(12px, env(safe-area-inset-right, 0px)); left: max(12px, env(safe-area-inset-left, 0px)); bottom: calc(144px + env(safe-area-inset-bottom, 0px)); max-width: 520px; margin-left: auto; height: min(720px, calc(100dvh - 170px)); overflow: hidden; display: flex; flex-direction: column; gap: 10px; background: var(--surface); border: 1px solid var(--line); border-radius: 18px; padding: 12px; box-shadow: 0 12px 36px rgba(0,0,0,.3); z-index: 9; }
+.gpanel .msgs { flex: 1 1 auto; min-height: 0; }
+.gpanel #gtools, .gpanel .gp-h, .gpanel .err, .gpanel #gnote { flex: none; }
+.gp-h { display: flex; justify-content: space-between; align-items: center; gap: 8px; }
+.gp-h button { border: 0; background: var(--chip); color: var(--fg); width: 32px; height: 32px; border-radius: 50%; font-size: 18px; line-height: 1; }
+@media (prefers-reduced-motion: no-preference) { .gpanel:not([hidden]) { animation: gpin .18s ease-out; } @keyframes gpin { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } } .seg button, .days button, .nav button { transition: background-color .15s, color .15s, border-color .15s; } }
+a.btn { display: inline-block; text-decoration: none; }
+[hidden] { display: none !important; }
+@media (max-width: 420px) { .word { font-size: 24px; } .lesson { grid-template-columns: 24px 58px minmax(0, 1fr); gap: 10px; } .stat .v { font-size: 19px; } .score .n { font-size: 34px; } }
+</style>
+
+<div class="wrap">
+  <header class="band">
+    <svg class="deco" viewBox="0 0 200 200" aria-hidden="true"><circle cx="100" cy="100" r="95" fill="none" stroke="#fff" stroke-width="10"/><circle cx="100" cy="100" r="62" fill="none" stroke="#fff" stroke-width="10"/><circle cx="100" cy="100" r="30" fill="#fff"/></svg>
+    <div class="brand">
+      <svg width="44" height="44" viewBox="0 0 44 44" aria-hidden="true"><defs><mask id="cm"><rect width="44" height="44" fill="#fff"/><circle cx="27" cy="17" r="11" fill="#000"/></mask></defs><circle cx="22" cy="22" r="22" fill="rgba(255,255,255,.18)"/><circle cx="22" cy="23" r="14" fill="#fff" mask="url(#cm)"/><circle cx="31" cy="12" r="2.4" fill="#fff"/></svg>
+      <div><div class="word">Aibarys</div><div class="sch">Aqtau International School</div></div>
+    </div>
+    <div class="bandrow">
+      <div><span class="st" id="childName"></span><span class="pill" id="childClass"></span><span class="pill">Родитель</span></div>
+      <div class="dt" id="todayLbl"></div>
+    </div>
+  </header>
+
+  <main>
+    <section class="panel" id="p-home"></section>
+
+    <section class="panel" id="p-grades" hidden>
+      <div class="seg" id="quarters" role="group" aria-label="Четверть"></div>
+      <div class="stats" id="gstats"></div>
+      <div class="card"><div class="ch"><h3>Средний балл по ходу четверти</h3></div><div id="trend"></div></div>
+      <div class="ch"><h3>По предметам</h3></div>
+      <div class="rows" id="subjects"></div>
+    </section>
+
+    <section class="panel" id="p-beh" hidden>
+      <label class="muted" style="font-size:14px;display:grid;gap:4px" for="bmonth">Месяц<select id="bmonth"></select></label>
+      <div class="card" id="bscore"></div>
+      <div class="card"><div class="ch"><h3>Поведение по месяцам</h3></div><div id="bchart"></div></div>
+      <div class="ch"><h3>Рапорты за месяц</h3></div>
+      <div class="rows" id="breports"></div>
+      <div class="card">
+        <h3>Как считается балл</h3>
+        <div class="scale">
+          <div><span class="g hi">5</span><span>Отлично: замечаний нет.</span></div>
+          <div><span class="g">4</span><span>Хорошо: мелкие замечания.</span></div>
+          <div><span class="g mid">3</span><span>Удовлетворительно: заметные нарушения.</span></div>
+          <div><span class="g lo">2</span><span>Плохо: серьёзные нарушения.</span></div>
+          <div><span class="g lo">1</span><span>Грубое нарушение.</span></div>
+        </div>
+        <p class="muted" style="margin:0;font-size:14px">Баллы за поведение отдельные от оценок за знания. Без рапортов в месяце ставится 5. Если рапорты есть, балл считается как среднее по ним. Перед каждым баллом учитель пишет, что произошло, почему ребёнок так поступил и почему это случилось на уроке. Учитель может также выставить итоговый балл за месяц сам.</p>
+        <div class="acts"><button class="btn sm" data-gq="Объясни, почему у моего ребёнка такой балл за поведение в этом месяце, и как мне поговорить с ним об этом">Объяснить балл гидом</button></div>
+      </div>
+    </section>
+
+    <section class="panel" id="p-schedule" hidden>
+      <div class="days" id="days"></div>
+      <div class="daymeta" id="daymeta"></div>
+      <div class="rows" id="lessons"></div>
+    </section>
+
+    <section class="panel" id="p-more" hidden>
+      <div class="seg" id="moreseg" role="group" aria-label="Раздел">
+        <button data-m="att" aria-pressed="true">Посещаемость</button>
+        <button data-m="tasks" aria-pressed="false">Задания</button>
+        <button data-m="teachers" aria-pressed="false">Учителя</button>
+        <button data-m="news" aria-pressed="false">Новости</button>
+        <button data-m="me" aria-pressed="false">Профиль</button>
+      </div>
+      <div class="panel" id="m-att"></div>
+      <div class="panel" id="m-tasks" hidden></div>
+      <div class="panel" id="m-teachers" hidden></div>
+      <div class="panel" id="m-news" hidden></div>
+      <div class="panel" id="m-me" hidden>
+        <div class="card"><h3>Профиль</h3>
+          <label class="muted" style="font-size:14px;display:grid;gap:4px" for="nameIn">Ваше имя<input type="text" id="nameIn" maxlength="50"></label>
+          <div><div class="muted" style="font-size:14px;margin-bottom:6px">Оформление</div>
+            <div class="seg" id="themeSeg" role="group" aria-label="Тема">
+              <button data-th="auto" aria-pressed="true">Авто</button><button data-th="light" aria-pressed="false">Светлая</button><button data-th="dark" aria-pressed="false">Тёмная</button>
+            </div></div>
+        </div>
+        <div class="card"><h3>Звонки</h3><div class="rows" id="bells"></div></div>
+      </div>
+    </section>
+  </main>
+  <p class="muted" style="font-size:13px;margin:0">Данные в Aibarys примерные. Настоящие оценки, баллы за поведение и рапорты можно подставить вместо них.</p>
+</div>
+
+<nav class="nav" aria-label="Разделы"><div class="in" id="nav">
+  <button data-t="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-8 9 8v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/></svg>Главная</button>
+  <button data-t="grades"><svg viewBox="0 0 24 24"><path d="M5 21V11M12 21V4M19 21v-7"/></svg>Оценки</button>
+  <button data-t="beh"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M8.5 14.5c.9 1.2 2 1.8 3.5 1.8s2.6-.6 3.5-1.8M9 9.5h.01M15 9.5h.01"/></svg>Поведение</button>
+  <button data-t="schedule"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>Уроки</button>
+  <button data-t="more"><svg viewBox="0 0 24 24" style="fill:currentColor;stroke:none"><circle cx="5" cy="12" r="1.8"/><circle cx="12" cy="12" r="1.8"/><circle cx="19" cy="12" r="1.8"/></svg>Ещё</button>
+</div></nav>
+
+<button class="fab" id="gfab" type="button" aria-label="Открыть ИИ-гида" aria-expanded="false" aria-controls="gpanel">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H11l-4.5 4v-4h0A2.5 2.5 0 0 1 4 13.5z"/><path d="M9 8.5h6M9 11.5h3.5"/></svg>
+</button>
+<div class="gpanel" id="gpanel" role="dialog" aria-label="ИИ-гид для родителей" hidden>
+  <div class="gp-h"><b>ИИ-гид для родителей</b><button type="button" id="gclose" aria-label="Закрыть">×</button></div>
+  <div class="msgs" id="gmsgs" aria-live="polite"></div>
+  <div class="muted" id="gnote" style="font-size:14px">Подключаю ИИ-гида…</div>
+  <div id="gtools" hidden>
+    <div class="qchips" id="gchips">
+      <button type="button" data-gq="Как ведёт себя мой ребёнок? Расскажи про баллы за поведение и рапорты.">Как ведёт себя ребёнок</button>
+      <button type="button" data-gq="Почему сняли баллы за поведение?">Почему сняли баллы</button>
+      <button type="button" data-gq="Какие у ребёнка оценки и по каким предметам нужно подтянуться?">Оценки и предметы</button>
+      <button type="button" data-gq="Как мне помочь ребёнку улучшить поведение?">Как помочь</button>
+      <button type="button" data-gq="Что у ребёнка с посещаемостью?">Посещаемость</button>
+    </div>
+    <form class="gform" id="gform" novalidate style="margin-top:10px">
+      <textarea id="gin" rows="2" maxlength="400" placeholder="Например: за что поставили 3 по поведению?" aria-label="Ваш вопрос гиду"></textarea>
+      <div style="display:flex;gap:6px"><button class="btn" type="submit" id="gsend">Спросить</button><button class="btn alt" type="button" id="gstop" hidden>Стоп</button></div>
+    </form>
+  </div>
+  <div class="err" id="gerr" role="alert"></div>
+</div>
+
+<script>
+/* ---------- Данные (пример) ---------- */
+var D = {
+  child: 'Айдана Жумабекова', klass: '8 «Б»', homeroom: 'Петрова Наталья Игоревна',
+  bells: [[8,0,8,45],[8,55,9,40],[9,50,10,35],[10,50,11,35],[11,45,12,30],[12,40,13,25],[13,35,14,20]],
+  subjects: {
+    alg: ['Алгебра','Ким Анна Борисовна','214'], geo: ['Геометрия','Ким Анна Борисовна','214'],
+    rus: ['Русский язык','Петрова Наталья Игоревна','305'], lit: ['Литература','Петрова Наталья Игоревна','305'],
+    kaz: ['Казахский язык','Сейтова Гульнара Кайратовна','308'], eng: ['Английский язык','Браун Кэтрин','112'],
+    his: ['История Казахстана','Омаров Дастан Тулегенович','210'], phy: ['Физика','Ли Виктор Евгеньевич','Каб. физики'],
+    bio: ['Биология','Назарова Раиса Сергеевна','Каб. биологии'], inf: ['Информатика','Тен Елена Александровна','Каб. 2'],
+    gg: ['География','Назарова Раиса Сергеевна','216'], pe: ['Физкультура','Байжанов Ермек Муратович','Спортзал']
+  },
+  week: [
+    ['alg','rus','eng','phy','his','pe'],
+    ['geo','kaz','lit','alg','bio','inf'],
+    ['rus','alg','gg','eng','phy','kaz'],
+    ['lit','geo','his','pe','kaz','inf'],
+    ['alg','eng','rus','bio','gg','pe']
+  ],
+  quarters: [{ id: 1, name: '1 четверть' }, { id: 2, name: '2 четверть' }],
+  grades: {
+    1: {
+      alg: ['05.09 9 СР','12.09 8 ДЗ','19.09 9 КР','03.10 8 Устно','17.10 10 КР'],
+      geo: ['08.09 8 ДЗ','15.09 8 СР','29.09 6 КР','13.10 9 Устно'],
+      rus: ['04.09 9 Диктант','11.09 8 ДЗ','25.09 8 КР','09.10 9 Устно','21.10 10 КР'],
+      lit: ['10.09 10 Устно','24.09 9 ДЗ','15.10 8 Сочинение'],
+      kaz: ['06.09 7 ДЗ','13.09 6 СР','27.09 8 КР','11.10 7 Устно'],
+      eng: ['07.09 9 ДЗ','14.09 10 Устно','28.09 8 КР','12.10 9 Эссе','19.10 10 КР'],
+      his: ['09.09 8 Устно','23.09 9 ДЗ','14.10 7 КР'],
+      phy: ['10.09 7 СР','24.09 9 ДЗ','08.10 5 КР','22.10 8 Лаб.'],
+      bio: ['11.09 9 ДЗ','25.09 10 Устно','16.10 9 КР'],
+      inf: ['12.09 10 Практ.','26.09 9 Практ.','17.10 10 КР'],
+      gg: ['05.09 8 ДЗ','19.09 7 Устно','10.10 9 КР'],
+      pe: ['15.09 10 Норматив','13.10 9 Норматив']
+    },
+    2: {
+      alg: ['04.11 9 СР','06.11 8 ДЗ'], geo: ['05.11 8 Устно'], rus: ['03.11 9 Диктант'],
+      lit: ['05.11 10 Устно'], kaz: ['04.11 6 СР','06.11 7 ДЗ'], eng: ['03.11 10 Устно','06.11 9 ДЗ'],
+      his: ['05.11 8 Устно'], phy: ['06.11 9 Лаб.'], bio: [], inf: ['05.11 10 Практ.'], gg: ['04.11 9 ДЗ'], pe: []
+    }
+  },
+  /* рапорты: off = дней от сегодня; mark = балл за поведение 1–5 */
+  reports: [
+    { id: 'r1', off: -6, s: 'alg', mark: 4, what: 'Разговаривала с соседкой по парте во время объяснения нового материала.', why: 'Хотела обсудить домашнее задание, не успела на перемене.', les: 'Объяснение шло быстро, и она переспрашивала подругу, чтобы не отстать.' },
+    { id: 'r2', off: -3, s: 'eng', mark: 4, what: 'Опоздала на урок на 5 минут.', why: 'Задержалась в библиотеке, сдавала книгу.', les: 'Вошла после звонка, класс на минуту отвлёкся.' },
+    { id: 'r3', off: -35, s: 'phy', mark: 3, what: 'Использовала телефон на уроке.', why: 'Ждала сообщение от мамы про то, кто заберёт её из школы.', les: 'Во время лабораторной работы телефон лежал на парте, и она отвлеклась от опыта.' }
+  ],
+  exams: [
+    { off: 4, s: 'alg', t: 'Контрольная: квадратные уравнения' },
+    { off: 5, s: 'phy', t: 'Лабораторная работа №3' },
+    { off: 10, s: 'eng', t: 'Unit 5 Test' }
+  ],
+  tasks: [
+    { off: 0, s: 'eng', t: 'Unit 5, Workbook, стр. 46–47' },
+    { off: 1, s: 'alg', t: '№ 412–418, повторить формулы сокращённого умножения' },
+    { off: 2, s: 'bio', t: 'Отчёт по лабораторной работе «Строение клетки»' },
+    { off: 3, s: 'rus', t: 'Упр. 187 и выучить правило' },
+    { off: 5, s: 'phy', t: 'Параграф 14, вопросы 1–5' },
+    { off: 6, s: 'his', t: 'Короткий доклад о Казахском ханстве (2 минуты)' }
+  ],
+  news: [
+    { off: -1, t: 'Родительское собрание', b: 'Состоится 12 ноября в 18:00 в актовом зале. Обсудим итоги 1 четверти и подготовку к зимним экзаменам.' },
+    { off: -3, t: 'Олимпиада по математике', b: 'Запись открыта до 15 ноября. Заявку можно подать учителю алгебры.' },
+    { off: -6, t: 'Школьная ярмарка', b: 'Классы готовят стенды. Пожалуйста, согласуйте тему с классным руководителем.' }
+  ],
+  absences: [
+    { off: -2, type: 'late', t: 'Опоздание на 1 урок (5 минут)' },
+    { off: -9, type: 'sick', t: 'Болезнь, есть справка' },
+    { off: -10, type: 'sick', t: 'Болезнь, есть справка' },
+    { off: -24, type: 'ex', t: 'Олимпиада по приказу школы' }
+  ],
+  schoolDays: 45
+};
+var CUR_Q = 2;
+var MONTHS = ['янв.','фев.','мар.','апр.','мая','июн.','июл.','авг.','сент.','окт.','нояб.','дек.'];
+var MFULL = ['Январь','Февраль','Март','Апрель','Май','Июнь','Июль','Август','Сентябрь','Октябрь','Ноябрь','Декабрь'];
+var MSHORT = ['янв','фев','мар','апр','май','июн','июл','авг','сен','окт','ноя','дек'];
+var WD = ['вс','пн','вт','ср','чт','пт','сб'];
+var DAY_FULL = ['Понедельник','Вторник','Среда','Четверг','Пятница'];
+var DAY_SHORT = ['Пн','Вт','Ср','Чт','Пт'];
+
+/* ---------- Помощники ---------- */
+function $(id) { return document.getElementById(id); }
+function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]; }); }
+function pad(n) { return (n < 10 ? '0' : '') + n; }
+function hm(h, m) { return h + ':' + pad(m); }
+function fmt1(a) { return a.toFixed(1).replace('.', ','); }
+function fmt2(a) { return a.toFixed(2).replace('.', ','); }
+function plural(n, one, few, many) { var a = n % 10, b = n % 100; if (a === 1 && b !== 11) return one; if (a >= 2 && a <= 4 && (b < 10 || b >= 20)) return few; return many; }
+function gc(g) { return g >= 9 ? 'hi' : g >= 7 ? '' : g >= 5 ? 'mid' : 'lo'; }
+function bc(v) { return v >= 4.5 ? 'hi' : v >= 3.5 ? '' : v >= 2.5 ? 'mid' : 'lo'; }
+function chip(g, extra) { return '<span class="g ' + gc(g) + (extra ? ' ' + extra : '') + '">' + g + '</span>'; }
+function store(k, v) { try { localStorage.setItem(k, v); } catch (e) {} }
+function load(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+function parseGrade(s) { var p = s.split(' '), d = p[0].split('.'); return { key: (+d[1]) * 100 + (+d[0]), date: (+d[0]) + ' ' + MONTHS[+d[1] - 1], g: +p[1], type: p.slice(2).join(' ') }; }
+var NOW = new Date(), T0 = new Date(NOW.getFullYear(), NOW.getMonth(), NOW.getDate());
+function addDays(d, n) { var x = new Date(d); x.setDate(x.getDate() + n); return x; }
+function iso(d) { return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate()); }
+function fmtDate(d) { return WD[d.getDay()] + ', ' + d.getDate() + ' ' + MONTHS[d.getMonth()]; }
+function fmtIso(s) { var p = s.split('-'); return (+p[2]) + ' ' + MONTHS[+p[1] - 1]; }
+function minWord(m) { if (m >= 60) { var h = Math.floor(m / 60), r = m % 60; return h + ' ч' + (r ? ' ' + r + ' мин' : ''); } return m + ' мин'; }
+function roomLbl(r) { return /^\d+$/.test(r) ? 'каб. ' + r : r.replace(/^Каб\. /, 'каб. '); }
+function firstName(full) { return String(full).trim().split(/\s+/)[0]; }
+
+var state = { tab: 'home', dayIdx: 0, q: CUR_Q, more: 'att', name: load('aibp-name') || 'Мадина Серикбаевна', theme: load('aibp-theme') || 'auto' };
+var todayIdx = NOW.getDay() >= 1 && NOW.getDay() <= 5 ? NOW.getDay() - 1 : -1;
+state.dayIdx = todayIdx >= 0 ? todayIdx : 0;
+var REPORTS = D.reports.map(function (r) { return { id: r.id, d: iso(addDays(T0, r.off)), s: r.s, mark: r.mark, what: r.what, why: r.why, les: r.les }; });
+
+/* ---------- Оценки ---------- */
+function qItems(q, key) { return ((D.grades[q] || {})[key] || []).map(parseGrade); }
+function qStats(q) {
+  var all = [], rows = [];
+  Object.keys(D.subjects).forEach(function (k) {
+    var items = qItems(q, k), sum = items.reduce(function (a, x) { return a + x.g; }, 0);
+    items.forEach(function (it) { all.push({ it: it, k: k }); });
+    rows.push({ k: k, name: D.subjects[k][0], items: items, avg: items.length ? sum / items.length : null });
+  });
+  var total = all.length, avg = total ? all.reduce(function (a, x) { return a + x.it.g; }, 0) / total : null;
+  return { all: all, rows: rows, total: total, avg: avg };
+}
+
+/* ---------- Поведение ---------- */
+function monthKey(d) { return String(d).slice(0, 7); }
+function monthLabel(k) { var p = k.split('-'); return MFULL[+p[1] - 1] + ' ' + p[0]; }
+function monthShort(k) { return MSHORT[+k.split('-')[1] - 1]; }
+function curMonth() { return T0.getFullYear() + '-' + pad(T0.getMonth() + 1); }
+function monthsBack(n) { var out = []; for (var i = 0; i < n; i++) { var d = new Date(T0.getFullYear(), T0.getMonth() - i, 1); out.push(d.getFullYear() + '-' + pad(d.getMonth() + 1)); } return out; }
+function reportsIn(mk) { return REPORTS.filter(function (r) { return monthKey(r.d) === mk; }).sort(function (a, b) { return a.d < b.d ? 1 : -1; }); }
+function behMonth(mk) {
+  var arr = reportsIn(mk);
+  if (!arr.length) return { v: 5, n: 0 };
+  return { v: Math.round(arr.reduce(function (a, r) { return a + r.mark; }, 0) / arr.length * 10) / 10, n: arr.length };
+}
+function behWord(v) { return v >= 4.5 ? 'Отличное поведение' : v >= 3.5 ? 'Хорошее поведение' : v >= 2.5 ? 'Удовлетворительное поведение' : 'Поведение требует внимания'; }
+
+/* ---------- Шапка и тема ---------- */
+function renderBand() { $('childName').textContent = D.child; $('childClass').textContent = D.klass; $('todayLbl').textContent = fmtDate(NOW); }
+function applyTheme() {
+  var r = document.documentElement;
+  if (state.theme === 'auto') r.removeAttribute('data-theme'); else r.setAttribute('data-theme', state.theme);
+  var bs = $('themeSeg').querySelectorAll('button');
+  for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', String(bs[i].dataset.th === state.theme));
+}
+
+/* ---------- Главная ---------- */
+function greet() { var h = new Date().getHours(); return h < 5 ? 'Доброй ночи' : h < 12 ? 'Доброе утро' : h < 18 ? 'Добрый день' : 'Добрый вечер'; }
+function attPct() { var days = D.absences.filter(function (a) { return a.type !== 'late'; }).length; return Math.round((D.schoolDays - days) / D.schoolDays * 100); }
+function heroHtml() {
+  var wd = NOW.getDay(), child = firstName(D.child);
+  var idx = wd >= 1 && wd <= 5 ? wd - 1 : -1, label = 'Сегодня', day = null;
+  if (idx >= 0) {
+    var list = D.week[idx], last = D.bells[list.length - 1], mins = NOW.getHours() * 60 + NOW.getMinutes();
+    if (mins < last[2] * 60 + last[3]) day = { list: list, idx: idx };
+  }
+  if (!day) {
+    for (var a = 1; a <= 7; a++) { var d2 = addDays(T0, a); if (d2.getDay() >= 1 && d2.getDay() <= 5) { day = { list: D.week[d2.getDay() - 1], idx: d2.getDay() - 1 }; label = a === 1 ? 'Завтра' : DAY_FULL[d2.getDay() - 1]; break; } }
+  }
+  var first = D.subjects[day.list[0]], b0 = D.bells[0], lb = D.bells[day.list.length - 1];
+  return '<div class="k">' + label + ' у ' + esc(child.replace(/а$/, 'ы')) + '</div><div class="n">' + day.list.length + ' ' + plural(day.list.length, 'урок', 'урока', 'уроков') + ', ' + hm(b0[0], b0[1]) + '–' + hm(lb[2], lb[3]) + '</div>' +
+    '<div class="s">Первый урок: ' + first[0] + ', ' + roomLbl(first[2]) + '</div>';
+}
+function dueHtml(off) {
+  if (off < 0) return '<span class="due late">просрочено</span>';
+  if (off === 0) return '<span class="due soon">сегодня</span>';
+  if (off === 1) return '<span class="due soon">завтра</span>';
+  return '<span class="due">' + fmtDate(addDays(T0, off)) + '</span>';
+}
+function renderHome() {
+  var mk = curMonth(), b = behMonth(mk), qs = qStats(CUR_Q), rs = reportsIn(mk);
+  var h = '<h2 class="greet">' + greet() + ', ' + esc(state.name) + '</h2><div class="card hero">' + heroHtml() + '</div>';
+  h += '<div class="stats"><div class="stat"><div class="v">' + (qs.avg === null ? '–' : fmt2(qs.avg)) + '</div><div class="l">средний балл, из 10</div></div>' +
+    '<div class="stat"><div class="v">' + fmt1(b.v) + '</div><div class="l">поведение, из 5</div></div>' +
+    '<div class="stat"><div class="v">' + attPct() + '%</div><div class="l">посещаемость</div></div></div>';
+  h += '<div class="card"><div class="ch"><h3>Поведение за ' + monthLabel(mk).split(' ')[0].toLowerCase() + '</h3><button class="lnk" data-go="beh">Подробнее</button></div>' +
+    '<div class="score"><div class="n">' + fmt1(b.v) + '<small> / 5</small></div><div><div class="t">' + behWord(b.v) + '</div><div class="s">' + (rs.length ? 'Рапортов в месяце: ' + rs.length + '. Последний от ' + fmtIso(rs[0].d) + ', ' + D.subjects[rs[0].s][0] + '.' : 'Замечаний в этом месяце нет.') + '</div></div></div>' +
+    '<div class="acts"><button class="btn sm" data-gq="Как ведёт себя мой ребёнок? Расскажи про баллы за поведение и рапорты.">Спросить гида</button></div></div>';
+  var recent = qs.all.slice().sort(function (a, b) { return b.it.key - a.it.key; }).slice(0, 3);
+  h += '<div class="card"><div class="ch"><h3>Последние оценки</h3><button class="lnk" data-go="grades">Все оценки</button></div><div class="rows">' + recent.map(function (x) {
+    return '<div class="row">' + chip(x.it.g, 'big') + '<div><div class="nm">' + D.subjects[x.k][0] + '</div><div class="sb">' + x.it.date + (x.it.type ? ' · ' + x.it.type : '') + '</div></div><span></span></div>';
+  }).join('') + '</div></div>';
+  h += '<div class="card"><div class="ch"><h3>Контрольные</h3></div><div class="rows">' + D.exams.map(function (e) {
+    return '<div class="row"><span class="due soon">' + fmtDate(addDays(T0, e.off)) + '</span><div><div class="nm">' + D.subjects[e.s][0] + '</div><div class="sb">' + e.t + '</div></div><span></span></div>';
+  }).join('') + '</div></div>';
+  h += '<div class="card"><div class="ch"><h3>Чат с учителем</h3></div><div class="s muted" style="font-size:15px">Напишите классному руководителю или учителю предмета. Ответы приходят в чат.</div><div class="acts"><a class="btn sm" href="https://claude.ai/artifact/97aapmjxFQne4uw4oEXUHv" target="_blank" rel="noopener">Открыть чат</a></div></div>';
+  var nw = D.news[0];
+  h += '<div class="card news"><div class="ch"><h3>Объявление</h3><button class="lnk" data-go="more" data-more="news">Все новости</button></div><div><div class="t">' + nw.t + '</div><div class="b">' + nw.b + '</div></div></div>';
+  $('p-home').innerHTML = h;
+}
+
+/* ---------- Оценки ---------- */
+function trendSvg(items) {
+  if (items.length < 2) return '<div class="empty">График появится, когда будет хотя бы две оценки.</div>';
+  var sum = 0, avgs = items.map(function (x, i) { sum += x.g; return sum / (i + 1); });
+  var mn = Math.min.apply(null, avgs), lo = Math.max(0, Math.min(Math.floor(mn) - 1, 8)), hi = 10;
+  var W = 320, H = 130, L = 26, R = 8, T = 10, B = 22, pw = W - L - R, ph = H - T - B;
+  function X(i) { return L + pw * (i / (avgs.length - 1)); }
+  function Y(v) { return T + ph * (1 - (v - lo) / (hi - lo)); }
+  var pts = avgs.map(function (v, i) { return X(i).toFixed(1) + ',' + Y(v).toFixed(1); }), mid = Math.round((lo + hi) / 2);
+  var s = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Средний балл по ходу четверти: от ' + fmt1(avgs[0]) + ' до ' + fmt1(avgs[avgs.length - 1]) + '">';
+  [lo, mid, hi].forEach(function (v) { s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v).toFixed(1) + '" y2="' + Y(v).toFixed(1) + '"/><text class="axis" x="' + (L - 6) + '" y="' + (Y(v) + 3).toFixed(1) + '" text-anchor="end">' + v + '</text>'; });
+  s += '<path class="area" d="M' + pts.join(' L') + ' L' + X(avgs.length - 1).toFixed(1) + ',' + Y(lo).toFixed(1) + ' L' + L + ',' + Y(lo).toFixed(1) + ' Z"/><polyline class="ln" points="' + pts.join(' ') + '"/><circle class="dot" cx="' + X(avgs.length - 1).toFixed(1) + '" cy="' + Y(avgs[avgs.length - 1]).toFixed(1) + '" r="4"/>';
+  s += '<text class="axis" x="' + L + '" y="' + (H - 6) + '">' + items[0].date + '</text><text class="axis" x="' + (W - R) + '" y="' + (H - 6) + '" text-anchor="end">' + items[items.length - 1].date + '</text></svg>';
+  return s;
+}
+function renderGrades() {
+  var qs = qStats(state.q), all = qs.all.map(function (x) { return x.it; }).sort(function (a, b) { return a.key - b.key; });
+  var top = all.filter(function (x) { return x.g >= 9; }).length;
+  $('gstats').innerHTML = '<div class="stat"><div class="v">' + (qs.avg === null ? '–' : fmt2(qs.avg)) + '</div><div class="l">средний балл</div></div><div class="stat"><div class="v">' + qs.total + '</div><div class="l">' + plural(qs.total, 'оценка', 'оценки', 'оценок') + '</div></div><div class="stat"><div class="v">' + top + '</div><div class="l">оценок 9–10</div></div>';
+  $('trend').innerHTML = trendSvg(all);
+  $('quarters').innerHTML = D.quarters.map(function (q) { return '<button data-q="' + q.id + '" aria-pressed="' + (q.id === state.q) + '">' + q.name + '</button>'; }).join('');
+  $('subjects').innerHTML = qs.rows.map(function (r) {
+    var chips = r.items.map(function (x) { return chip(x.g); }).join('');
+    var head = '<summary><span class="nm">' + r.name + '</span>' + (r.avg !== null ? '<span class="avg"><b>' + fmt2(r.avg) + '</b><span>средний</span></span>' : '') +
+      '<span class="chips">' + (chips || '<span class="muted" style="font-size:14px">Оценок пока нет</span>') + '</span>' + (r.avg !== null ? '<span class="bar"><i style="width:' + (r.avg * 10).toFixed(0) + '%"></i></span>' : '') + '</summary>';
+    var det = r.items.length ? '<ul class="detail">' + r.items.slice().sort(function (a, b) { return b.key - a.key; }).map(function (x) { return '<li><span class="d">' + x.date + '</span><span class="t">' + (x.type || 'Урок') + '</span>' + chip(x.g) + '</li>'; }).join('') + '</ul>' : '';
+    return '<details>' + head + det + '</details>';
+  }).join('');
+}
+
+/* ---------- Поведение ---------- */
+function renderBehavior() {
+  var months = monthsBack(4), cur = $('bmonth').value || curMonth();
+  if (months.indexOf(cur) < 0) cur = months[0];
+  $('bmonth').innerHTML = months.map(function (k) { return '<option value="' + k + '"' + (k === cur ? ' selected' : '') + '>' + monthLabel(k) + '</option>'; }).join('');
+  var b = behMonth(cur), rs = reportsIn(cur);
+  $('bscore').innerHTML = '<div class="score"><div class="n">' + fmt1(b.v) + '<small> / 5</small></div><div><div class="t">' + behWord(b.v) + '</div><div class="s">' + (rs.length ? 'Рапортов за месяц: ' + rs.length + '. Балл считается как среднее по ним.' : 'Рапортов нет, поэтому поставлено максимальное 5.') + '</div></div></div><span class="bar"><i style="width:' + (b.v / 5 * 100).toFixed(0) + '%"></i></span>';
+  var W = 320, H = 150, L = 22, R = 8, T = 14, B = 22, pw = W - L - R, ph = H - T - B, n = months.length, bw = pw / n;
+  function Y(v) { return T + ph * (1 - (v - 1) / 4); }
+  var ord = months.slice().reverse(), s = '<svg class="chart" viewBox="0 0 ' + W + ' ' + H + '" role="img" aria-label="Баллы за поведение по месяцам">';
+  [1, 3, 5].forEach(function (v) { s += '<line class="grid" x1="' + L + '" x2="' + (W - R) + '" y1="' + Y(v).toFixed(1) + '" y2="' + Y(v).toFixed(1) + '"/><text class="axis" x="' + (L - 6) + '" y="' + (Y(v) + 3).toFixed(1) + '" text-anchor="end">' + v + '</text>'; });
+  ord.forEach(function (k, i) {
+    var v = behMonth(k).v, x = L + i * bw + 14, w = bw - 28, y = Y(v);
+    s += '<rect class="bar-r ' + (k === cur ? 'cur' : 'old') + '" x="' + x.toFixed(1) + '" y="' + y.toFixed(1) + '" width="' + w.toFixed(1) + '" height="' + (Y(1) - y + 2).toFixed(1) + '" rx="4"/>';
+    s += '<text class="val" x="' + (x + w / 2).toFixed(1) + '" y="' + (y - 4).toFixed(1) + '" text-anchor="middle">' + fmt1(v) + '</text><text class="axis" x="' + (x + w / 2).toFixed(1) + '" y="' + (H - 6) + '" text-anchor="middle">' + monthShort(k) + '</text>';
+  });
+  $('bchart').innerHTML = s + '</svg>';
+  $('breports').innerHTML = rs.length ? rs.map(function (r) {
+    var t = D.subjects[r.s];
+    return '<div class="rep"><div class="hd"><span class="who">' + fmtIso(r.d) + ' · ' + t[0] + '</span><span class="g ' + bc(r.mark) + '">' + r.mark + '</span></div>' +
+      '<div class="muted" style="font-size:13px">Учитель: ' + esc(t[1]) + '</div>' +
+      '<dl><dt>Что произошло</dt><dd>' + esc(r.what) + '</dd><dt>Почему ребёнок так поступил</dt><dd>' + esc(r.why) + '</dd><dt>Почему это случилось на уроке</dt><dd>' + esc(r.les) + '</dd></dl></div>';
+  }).join('') : '<div class="empty">В ' + monthLabel(cur).split(' ')[0].toLowerCase() + ' рапортов нет.</div>';
+}
+
+/* ---------- Расписание ---------- */
+function renderDays() {
+  var monday = addDays(T0, NOW.getDay() === 0 ? 1 : NOW.getDay() === 6 ? 2 : 1 - NOW.getDay());
+  $('days').innerHTML = DAY_SHORT.map(function (n, i) { return '<button data-i="' + i + '" aria-pressed="' + (i === state.dayIdx) + '"' + (i === todayIdx ? ' class="today"' : '') + '><span class="dn">' + n + '</span><span class="dd">' + addDays(monday, i).getDate() + '</span></button>'; }).join('');
+}
+function renderLessons() {
+  var list = D.week[state.dayIdx], mins = new Date().getHours() * 60 + new Date().getMinutes();
+  $('lessons').innerHTML = list.map(function (k, i) {
+    var s = D.subjects[k], b = D.bells[i], now = state.dayIdx === todayIdx && mins >= b[0] * 60 + b[1] && mins < b[2] * 60 + b[3];
+    return '<div class="lesson' + (now ? ' now' : '') + '"><div class="num">' + (i + 1) + '</div><div class="time"><b>' + hm(b[0], b[1]) + '</b>' + hm(b[2], b[3]) + '</div><div><div class="name">' + s[0] + (now ? '<span class="badge">идёт</span>' : '') + '</div><div class="sub">' + esc(s[1]) + ' · ' + roomLbl(s[2]) + '</div></div></div>';
+  }).join('');
+  var last = D.bells[list.length - 1];
+  $('daymeta').innerHTML = '<span><strong>' + DAY_FULL[state.dayIdx] + '</strong>' + (state.dayIdx === todayIdx ? ', сегодня' : '') + '</span><span>' + list.length + ' ' + plural(list.length, 'урок', 'урока', 'уроков') + ' · ' + hm(D.bells[0][0], D.bells[0][1]) + '–' + hm(last[2], last[3]) + '</span>';
+}
+
+/* ---------- Ещё ---------- */
+function renderMore() {
+  var days = D.absences.filter(function (a) { return a.type !== 'late'; }).length, late = D.absences.length - days, names = { late: 'Опоздание', sick: 'Болезнь', ex: 'Уважительная причина' };
+  $('m-att').innerHTML = '<div class="stats"><div class="stat"><div class="v">' + attPct() + '%</div><div class="l">посещаемость</div></div><div class="stat"><div class="v">' + days + '</div><div class="l">' + plural(days, 'пропущенный день', 'пропущенных дня', 'пропущенных дней') + '</div></div><div class="stat"><div class="v">' + late + '</div><div class="l">' + plural(late, 'опоздание', 'опоздания', 'опозданий') + '</div></div></div>' +
+    '<div class="card"><h3>Записи</h3><div class="rows">' + D.absences.map(function (a) { return '<div class="row"><span class="due' + (a.type === 'late' ? '' : ' soon') + '">' + fmtDate(addDays(T0, a.off)) + '</span><div><div class="nm">' + names[a.type] + '</div><div class="sb">' + a.t + '</div></div><span></span></div>'; }).join('') + '</div></div>';
+  $('m-tasks').innerHTML = D.tasks.map(function (t) { return '<div class="task"><div><div class="nm">' + D.subjects[t.s][0] + '</div><div class="tx">' + esc(t.t) + '</div></div>' + dueHtml(t.off) + '</div>'; }).join('');
+  var byT = {}, order = [];
+  Object.keys(D.subjects).forEach(function (k) { var s = D.subjects[k]; if (!byT[s[1]]) { byT[s[1]] = { s: [], r: [] }; order.push(s[1]); } byT[s[1]].s.push(s[0]); if (byT[s[1]].r.indexOf(s[2]) < 0) byT[s[1]].r.push(s[2]); });
+  $('m-teachers').innerHTML = '<div class="acts"><a class="btn" href="https://claude.ai/artifact/97aapmjxFQne4uw4oEXUHv" target="_blank" rel="noopener">Написать учителю в чате</a></div>' + order.map(function (t) { return '<div class="tcard"><div class="tn">' + esc(t) + (t === D.homeroom ? '<span class="badge">классный руководитель</span>' : '') + '</div><div>' + esc(byT[t].s.join(', ')) + '</div><div class="tmeta">' + esc(byT[t].r.map(roomLbl).join(', ')) + '</div></div>'; }).join('');
+  $('m-news').innerHTML = D.news.map(function (n) { return '<div class="card news"><div><div class="d">' + fmtDate(addDays(T0, n.off)) + '</div><div class="t">' + n.t + '</div></div><div class="b">' + n.b + '</div></div>'; }).join('');
+  $('bells').innerHTML = D.bells.map(function (b, i) { return '<div class="row"><span class="muted" style="min-width:20px;font-weight:600">' + (i + 1) + '</span><span>' + hm(b[0], b[1]) + ' – ' + hm(b[2], b[3]) + '</span><span></span></div>'; }).join('');
+}
+function showMore(m) {
+  state.more = m;
+  ['att', 'tasks', 'teachers', 'news', 'me'].forEach(function (x) { $('m-' + x).hidden = x !== m; });
+  var bs = $('moreseg').querySelectorAll('button');
+  for (var i = 0; i < bs.length; i++) bs[i].setAttribute('aria-pressed', String(bs[i].dataset.m === m));
+}
+
+/* ---------- ИИ-гид для родителей ---------- */
+var guide = { sample: null, turns: [], ctl: null, busy: false };
+function localSummary() {
+  var mk = curMonth(), b = behMonth(mk), rs = reportsIn(mk), qs = qStats(CUR_Q);
+  return 'Кратко о ' + firstName(D.child).replace(/а$/, 'е') + ':\n' +
+    '- Поведение за ' + monthLabel(mk).split(' ')[0].toLowerCase() + ': ' + fmt1(b.v) + ' из 5' + (rs.length ? ' (рапортов: ' + rs.length + ')' : ', замечаний нет') + '.\n' +
+    '- Средний балл за ' + D.quarters[CUR_Q - 1].name + ': ' + (qs.avg === null ? 'нет оценок' : fmt2(qs.avg) + ' из 10') + '.\n' +
+    '- Посещаемость: ' + attPct() + '%.';
+}
+function guideContext() {
+  var n = new Date(), L = [];
+  L.push('Ребёнок: ' + D.child + ', ' + D.klass + ' класс, Aqtau International School. Родитель: ' + state.name + '. Классный руководитель: ' + D.homeroom + '.');
+  L.push('Сегодня: ' + fmtDate(n) + ', ' + hm(n.getHours(), n.getMinutes()) + '.', '');
+  L.push('ОЦЕНКИ ЗА ЗНАНИЯ (шкала 1–10):');
+  D.quarters.forEach(function (q) {
+    var qs = qStats(q.id);
+    L.push(q.name + ', средний ' + (qs.avg === null ? 'нет' : fmt2(qs.avg)) + ':');
+    qs.rows.forEach(function (r) { L.push('- ' + r.name + ': ' + (r.items.length ? r.items.map(function (x) { return x.g + ' (' + x.date + ', ' + (x.type || 'урок') + ')'; }).join(', ') + '; средний ' + fmt2(r.avg) : 'оценок нет')); });
+  });
+  L.push('', 'ПОВЕДЕНИЕ (отдельные баллы, шкала 1–5, где 5 лучший, 1 худший; без рапортов в месяце ставится 5, иначе среднее по рапортам):');
+  monthsBack(4).forEach(function (k) { var b = behMonth(k); L.push('- ' + monthLabel(k) + ': ' + fmt1(b.v) + ', рапортов ' + b.n); });
+  L.push('', 'РАПОРТЫ (перед баллом учитель всегда пишет объяснение):');
+  if (!REPORTS.length) L.push('- рапортов нет');
+  REPORTS.slice().sort(function (a, b) { return a.d < b.d ? 1 : -1; }).forEach(function (r) {
+    L.push('- ' + r.d + ', ' + D.subjects[r.s][0] + ', учитель ' + D.subjects[r.s][1] + ', балл ' + r.mark + '. Что произошло: ' + r.what + ' Почему ребёнок так поступил: ' + r.why + ' Почему на уроке: ' + r.les);
+  });
+  L.push('', 'ПОСЕЩАЕМОСТЬ: ' + attPct() + '%. Записи: ' + D.absences.map(function (a) { return fmtDate(addDays(T0, a.off)) + ' ' + a.t; }).join('; '));
+  L.push('', 'БЛИЖАЙШИЕ КОНТРОЛЬНЫЕ: ' + D.exams.map(function (e) { return fmtDate(addDays(T0, e.off)) + ' ' + D.subjects[e.s][0] + ' (' + e.t + ')'; }).join('; '));
+  L.push('ДОМАШНИЕ ЗАДАНИЯ: ' + D.tasks.map(function (t) { return D.subjects[t.s][0] + ' до ' + fmtDate(addDays(T0, t.off)) + ': ' + t.t; }).join('; '));
+  L.push('', 'УЧИТЕЛЯ:');
+  Object.keys(D.subjects).forEach(function (k) { var s = D.subjects[k]; L.push('- ' + s[1] + ': ' + s[0] + ', ' + roomLbl(s[2])); });
+  return L.join('\n');
+}
+var GUIDE_RULES = 'Ты ИИ-гид школьного приложения Aibarys для родителей учеников Aqtau International School. Родитель спрашивает про своего ребёнка: оценки, баллы за поведение, рапорты, посещаемость. ' +
+  'Отвечай по-русски (если пишут на казахском или английском, отвечай на их языке), спокойно, тактично и по делу: 2–6 предложений или короткий список. ' +
+  'Используй только данные ниже и не выдумывай факты. Объясняй шкалы: оценки за знания от 1 до 10, баллы за поведение от 1 до 5, и они считаются отдельно. ' +
+  'Когда спрашивают, почему такой балл за поведение, перескажи, что написал учитель в рапорте (что произошло, почему ребёнок так поступил, почему на уроке) и объясни, как из рапортов получился балл за месяц. ' +
+  'Не обвиняй ребёнка и не ругай, говори спокойно и по-доброму. Давай практичные советы родителю: как поговорить с ребёнком, о чём спросить учителя. Не ставь диагнозы. ' +
+  'Если данных для ответа нет, честно скажи об этом и посоветуй обратиться к классному руководителю. Не используй Markdown-разметку: без звёздочек и решёток, списки пиши с дефисом.\n\nДАННЫЕ\n';
+function guideBubble(role, text) { var d = document.createElement('div'); d.className = 'msg-b ' + (role === 'user' ? 'me' : 'ai'); d.textContent = text; $('gmsgs').appendChild(d); $('gmsgs').scrollTop = $('gmsgs').scrollHeight; return d; }
+function guideBusy(b) { guide.busy = b; $('gsend').disabled = b; $('gstop').hidden = !b; $('gin').disabled = b; var cs = $('gchips').querySelectorAll('button'); for (var i = 0; i < cs.length; i++) cs[i].disabled = b; }
+function guideErr(code) { return code === 'rate_limited' ? 'Слишком много вопросов подряд. Подождите немного и спросите снова.' : code === 'session_expired' ? 'Нужно заново войти в аккаунт Claude.' : code === 'refused' ? 'Гид не смог ответить на этот вопрос. Спросите по-другому.' : 'Не получилось получить ответ. Попробуйте ещё раз.'; }
+function guideOpen(open) {
+  $('gpanel').hidden = !open; $('gfab').setAttribute('aria-expanded', String(open));
+  if (open) { $('gmsgs').scrollTop = $('gmsgs').scrollHeight; if (!$('gtools').hidden && !$('gin').disabled) $('gin').focus(); }
+}
+function guideOff(msg) { $('gtools').hidden = true; $('gnote').hidden = false; $('gnote').textContent = msg; }
+async function guideAsk(q) {
+  q = String(q || '').trim();
+  if (!q || guide.busy || !guide.sample) return;
+  guideOpen(true);
+  guideBubble('user', q); $('gin').value = ''; $('gerr').textContent = '';
+  guide.turns.push({ role: 'user', content: q });
+  var bub = guideBubble('ai', 'Думаю…');
+  guideBusy(true);
+  var ctl = new AbortController(); guide.ctl = ctl;
+  var input = [{ role: 'user', content: GUIDE_RULES + guideContext() }].concat(guide.turns.slice(-10));
+  try {
+    var r = await guide.sample(input, { cache: false, modelTier: 'default', signal: ctl.signal, onText: function (u) { bub.textContent = u.text; $('gmsgs').scrollTop = $('gmsgs').scrollHeight; } });
+    bub.textContent = r.text; guide.turns.push({ role: 'assistant', content: r.text });
+    if (r.truncated) $('gerr').textContent = 'Ответ получился слишком длинным. Спросите покороче.';
+  } catch (e) {
+    var code = e && e.code;
+    if (e && e.text) { bub.textContent = e.text; guide.turns.push({ role: 'assistant', content: e.text }); } else { bub.remove(); guide.turns.pop(); }
+    if (code === 'not_granted' || code === 'sampling_disabled' || code === 'not_declared' || code === 'capability_disabled' || code === 'capability_removed') guideOff('ИИ-гид недоступен для вашего аккаунта. Оценки, поведение и рапорты смотрите на вкладках «Оценки» и «Поведение».');
+    else if (code !== 'cancelled') $('gerr').textContent = guideErr(code);
+  } finally { guideBusy(false); guide.ctl = null; }
+}
+function initGuide() {
+  var m = document.createElement('div'); m.className = 'msg-b ai';
+  m.textContent = 'Здравствуйте, ' + state.name.split(' ')[0] + '! Я ИИ-гид Aibarys. Расскажу про оценки, баллы за поведение и рапорты ' + firstName(D.child).replace(/а$/, 'ы') + '.';
+  $('gmsgs').appendChild(m);
+  var offMsg = 'ИИ-гид работает только по ссылке из Claude: в скачанном файле его нет. Оценки, поведение и рапорты смотрите на вкладках «Оценки» и «Поведение».';
+  function off() { guideOff(offMsg); var s = document.createElement('div'); s.className = 'msg-b ai'; s.textContent = localSummary(); $('gmsgs').appendChild(s); }
+  var c = window.claude;
+  if (!c || typeof c.use !== 'function') off();
+  else c.use('sample').then(function (s) { if (!s) { off(); return; } guide.sample = s; $('gnote').hidden = true; $('gtools').hidden = false; }, off);
+  $('gform').addEventListener('submit', function (e) { e.preventDefault(); guideAsk($('gin').value); });
+  $('gin').addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); guideAsk($('gin').value); } });
+  $('gstop').addEventListener('click', function () { if (guide.ctl) guide.ctl.abort(); });
+  $('gfab').addEventListener('click', function () { guideOpen($('gpanel').hidden); });
+  $('gclose').addEventListener('click', function () { guideOpen(false); $('gfab').focus(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && !$('gpanel').hidden) { guideOpen(false); $('gfab').focus(); } });
+}
+
+/* ---------- Вкладки и события ---------- */
+var TABS = ['home', 'grades', 'beh', 'schedule', 'more'];
+function showTab(t) {
+  if (TABS.indexOf(t) < 0) t = 'home';
+  state.tab = t;
+  TABS.forEach(function (x) { $('p-' + x).hidden = x !== t; });
+  var bs = $('nav').querySelectorAll('button');
+  for (var i = 0; i < bs.length; i++) { if (bs[i].dataset.t === t) bs[i].setAttribute('aria-current', 'page'); else bs[i].removeAttribute('aria-current'); }
+  if (t === 'home') renderHome();
+}
+function go(t) { if (location.hash === '#' + t) showTab(t); else location.hash = t; window.scrollTo(0, 0); }
+document.addEventListener('click', function (e) {
+  var el = e.target.closest('button'); if (!el) return;
+  var d = el.dataset;
+  if (d.t) { go(d.t); return; }
+  if (d.gq) { guideOpen(true); if (guide.sample) guideAsk(d.gq); return; }
+  if (d.go) { if (d.more) showMore(d.more); go(d.go); return; }
+  if (d.i !== undefined && el.parentNode.id === 'days') { state.dayIdx = +d.i; renderDays(); renderLessons(); return; }
+  if (d.q) { state.q = +d.q; renderGrades(); return; }
+  if (d.m) { showMore(d.m); return; }
+  if (d.th) { state.theme = d.th; store('aibp-theme', state.theme); applyTheme(); return; }
+});
+$('bmonth').addEventListener('change', renderBehavior);
+$('nameIn').addEventListener('input', function (e) { state.name = e.target.value || 'Родитель'; store('aibp-name', state.name); if (state.tab === 'home') renderHome(); });
+window.addEventListener('hashchange', function () { showTab(location.hash.slice(1)); });
+
+(function init() {
+  $('nameIn').value = state.name;
+  applyTheme(); renderBand(); renderDays(); renderLessons(); renderGrades(); renderBehavior(); renderMore(); showMore('att'); initGuide();
+  showTab(location.hash.slice(1));
+})();
+</script>
+
+</body></html>

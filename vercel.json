@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/student", "destination": "/student.html" },
+    { "source": "/zavuch", "destination": "/zavuch.html" },
+    { "source": "/parent", "destination": "/parent.html" },
+    { "source": "/teacher", "destination": "/teacher.html" }
+  ]
+}
